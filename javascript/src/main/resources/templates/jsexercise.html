@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise</title>
+</head>
+<body>
+
+<div id="container" class="container">
+    <h1>JavaScript Demo</h1>
+    <input id="input" type="text"/>
+
+    <br> <p id="output" hidden="true"></p>
+    <input id="btn" type="button" value="Click me!" onclick="checkButton()"/>
+
+</div>
+
+
+<script>
+
+
+    function btnClick() {
+
+        if (document.getElementById("output").hidden === false){
+            document.getElementById("output").hidden=true;
+        }
+        document.getElementById("input").value="Change me!";
+        document.getElementById("btn").value="Change text above and click me again";
+
+    }
+
+    function changeClick(){
+        let input = document.getElementById("input").value;
+
+        document.getElementById("output").innerHTML="Thank you for changing the input to: <b>" + input+ "</b>";
+        document.getElementById("output").hidden=false;
+        document.getElementById("input").value= input;
+        document.getElementById("btn").value="Click me again!";
+
+    }
+
+    function checkButton(){
+
+        if (document.getElementById("btn").value === "Click me!"){
+            btnClick()
+
+        } else if (document.getElementById("btn").value === "Change text above and click me again"){
+            changeClick()
+
+        } else {
+            btnClick()
+        }
+    }
+
+</script>
+</body>
+</html>

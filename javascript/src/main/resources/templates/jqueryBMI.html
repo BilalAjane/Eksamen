@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>jQuery BMI</title>
+</head>
+<body>
+
+<div id="container" class="container">
+    <h1>BMI Calculator </h1>
+
+    <div id="textsection">
+        Vægt (Kg) <br>
+        <input id="weight" type="text"/><br>
+        Højde (cm) <br>
+        <input id="height" type="text"/><br>
+    </div>
+    <button id="Calculate" onclick="btnClick()">Calculate</button>
+    <p>Din BMI er: <div id="output">?</div></p>
+    <p>Det betyder at du er: <div id="comment"></div></p>
+
+</div>
+
+
+<script>
+
+    $(document).ready(function(){
+        $("button").click(function (){
+            btnClick()
+        })
+    })
+
+    function btnClick(){
+
+        var weight = $("#weight").val();
+        var height = $("#height").val()/100;
+        var BMI = weight / (height * height);
+
+
+        $("#output").text(BMI);
+
+        if (BMI < 18.5) {
+            $("#comment").text("undervægtig");
+        }
+        if (BMI >= 18.5 && BMI <= 25) {
+            $("#comment").text("Normalvægtig");
+        }
+        if (BMI >= 25 && BMI <= 30) {
+            $("#comment").text("let overvægtig");
+        }
+        if (BMI > 30 && BMI <= 35) {
+            $("#comment").text("overvægtig klasse 1");
+        }
+        if (BMI > 35 && BMI <= 40) {
+            $("#comment").text("overvægtig klasse 2");
+        }
+        if (BMI > 40) {
+            $("#comment").text("overvægtig klasse 3");
+        }
+
+
+    }
+
+</script>
+
+</body>
+</html>

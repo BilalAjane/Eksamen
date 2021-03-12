@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BMI Calculator</title>
+</head>
+<body>
+
+<div id="container" class="container">
+    <h1>BMI Calculator </h1>
+
+    <div id="textsection">
+        Vægt (Kg) <br>
+        <input id="weight" type="text"/><br>
+        Højde (cm) <br>
+        <input id="height" type="text"/><br>
+    </div>
+    <button id="Calculate" onclick="btnClick()">Calculate</button>
+    <p>Din BMI er: <span id="output">?</span></p>
+    <p>Det betyder at du er: value = <span id="comment"></span></p>
+
+</div>
+
+
+<script>
+    function btnClick() {
+        //Get user input
+        var weight = Number(document.getElementById("weight").value);
+        var height = Number(document.getElementById("height").value/100);
+
+        //Calculate
+        var BMI = weight / (height * height);
+
+        //Display result
+        document.getElementById("output").innerHTML = BMI;
+        if (BMI < 18.5) document.getElementById("comment").innerHTML = "Undervægtig";
+        if (BMI >= 18.5 && BMI <= 25) document.getElementById("comment").innerHTML = "Normalvægtig";
+        if (BMI >= 25 && BMI <= 30) document.getElementById("comment").innerHTML = "let overvægtig";
+        if (BMI > 30 && BMI <= 35) document.getElementById("comment").innerHTML = "overvægtig klasse 1";
+        if (BMI > 35 && BMI <= 40) document.getElementById("comment").innerHTML = "overvægtig klasse 2";
+        if (BMI > 40) document.getElementById("comment").innerHTML = "overvægtig klasse 3";
+    }
+
+
+    // JQuery input
+
+
+    /*function formSubmit(){
+        let txt = document.getElementById("txtForm").value;
+        alert(txt);
+        // document.getElementById("textsection").innerText = txt; //dur ikke - siden reloader onsubmit
+    }
+     */
+</script>
+
+</body>
+</html>

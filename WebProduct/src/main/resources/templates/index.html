@@ -30,5 +30,30 @@
 
 <a href="create">Tilføj nyt produkt</a>
 
+
+<!-- AJAX -->
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "http://localhost:8080/products/1"
+        }).then(function (data) {
+            $('.product-name').html(data.productName);
+            $('.product-price').html(data.productPrice);
+        })
+    });
+
+    function changeItem() {
+        let choice = Number($("#choice").val());
+
+        $.ajax({
+            url: "http://localhost:8080/products/"+choice
+        }).then(function (data) {
+            $('.product-name').html(data.productName);
+            $('.product-price').html(data.productPrice);
+        });
+    }
+</script>
+
+
 </body>
 </html>
